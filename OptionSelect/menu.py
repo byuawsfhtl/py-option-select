@@ -15,7 +15,7 @@ class Menu:
         """Initializes menu class.
         """
 
-    def interactWithMenu(self, connected: bool, action: str, output: list, option: str) -> NamedTuple:
+    def interactWithMenu(self, connected: bool, action: str, output: list, option: str, notConnectedErrorMessage: str='Condition not passed') -> NamedTuple:
         """Prints a given menu and ensures correct user input.
 
         Args:
@@ -58,7 +58,7 @@ class Menu:
             #check to see if the requested action needs a file loaded to work
             if output[choice][2] == True:
                 if connected == False:
-                    print('\nERROR: Not connected to gimbal, please connect to gimbal')
+                    print('\nERROR: ' + notConnectedErrorMessage)
                     continue
 
             return menuTup(output[choice][1], output[choice][3], False)
